@@ -27,7 +27,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
     the function returns `None`.
     '''
     new_dict = open(dictionary_file)
-    dictionary = [word.strip() for word in new_dict.readlines()]
+    dict_strip = [word.strip() for word in new_dict.readlines()]
 
     if start_word == end_word:
         return [start_word]
@@ -39,7 +39,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
 
     while q:
         stack1 = q.popleft()
-        for word in list(dictionary):
+        for word in list(dict_strip):
             if _adjacent(stack1[-1], word):
                 if word == end_word:
                     stack1.append(word)
@@ -47,7 +47,7 @@ def word_ladder(start_word, end_word, dictionary_file='words5.dict'):
                 copy_stack1 = copy.copy(stack1)
                 copy_stack1.append(word)
                 q.append(copy_stack1)
-                dictionary.remove(word)
+                dict_strip.remove(word)
     return None
 
 
